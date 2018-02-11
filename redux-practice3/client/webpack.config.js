@@ -54,7 +54,8 @@ const webpackConfig = {
       'actions': path.resolve(__dirname, './src/actions'),
       'reducers': path.resolve(__dirname, './src/reducers'),
       'store': path.resolve(__dirname, './src/store'),
-      'assets': path.resolve(__dirname, './src/assets')
+      'assets': path.resolve(__dirname, './src/assets'),
+      'util': path.resolve(__dirname, './src/util')
     }
   },
   devServer: {
