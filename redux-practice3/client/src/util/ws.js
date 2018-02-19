@@ -1,4 +1,4 @@
-import { connectedNewUser } from "actions";
+import { connectedNewUser, disconnectedUser, receiveNewMessage } from "actions";
 import store from 'store';
 
 export default ((wsUrl) => {
@@ -14,9 +14,19 @@ export default ((wsUrl) => {
   ws.onmessage = (message) => {
     const messageObj = JSON.parse(message.data);
 
+    console.log("ws message:", messageObj);
+
     switch (messageObj.type) {
       case "connected_new_user":
-        dispatch(connectedNewUser(messageObj.userName));
+        dispatch(connectedNewUser(messageObj));
+        break;
+
+      case  "disconnected_user":
+        dispatch(disconnectedUser(messageObj.userID));
+        break;
+
+      case  "message":
+        dispatch(receiveNewMessage(messageObj.data));
         break;
     }
   };
@@ -40,4 +50,4 @@ export default ((wsUrl) => {
 
   return ws;
 
-})('ws://localhost:5000');
+})('ws://localhost:3000');

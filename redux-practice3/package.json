@@ -10,5 +10,8 @@
     "start": "concurrently \"npm run start:server\" \"npm run start:client\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "key-mirror": "^1.0.1"
+  }
 }
