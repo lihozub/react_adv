@@ -21,6 +21,10 @@ describe('alternative todo component testing', () => {
     const component = new ReactTestRenderer();
     component.render(<Todo />);
     const result = component.getRenderOutput();
-    console.log(result.props.children[1]);
+    
+    const divUnderForm = result.props.children[1];
+    const h6Tag = divUnderForm.props.children;
+    
+    expect(h6Tag.props.children).toBe('You don\'t have todos yet...');
   });
 });
